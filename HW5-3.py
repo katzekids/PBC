@@ -1,15 +1,15 @@
 # ===================================================
-# 座位分配函数
-# 根据乘客偏好尝试分配座位
-# 参数:
-#   current_sales: 当前座位分配状态
+# 座位分配函數
+# 根據乘客偏好嘗試分配座位
+# parameter:
+#   current_sales: 當前座位分配狀態
 #   c_id: 乘客ID
-#   c_pref: 乘客座位偏好 (0:无偏好, 1:靠窗, 2:靠走道)
+#   c_pref: 乘客座位偏好 (0:無偏好, 1:靠窗, 2:靠走道)
 #   s_start: 起始站
-#   s_end: 终点站
+#   s_end: 終點站
 # 返回:
 #   success: 是否分配成功
-#   assigned_seat: 分配的座位号
+#   assigned_seat: 分配的座位號
 def try_to_sell(current_sales, c_id, c_pref, s_start, s_end):
     # Initialize the return value: success and assigned_seat
     success = False
@@ -60,8 +60,8 @@ def try_to_sell(current_sales, c_id, c_pref, s_start, s_end):
 
 
 # ===================================================
-# 输入模块
-# 处理用户输入并解析乘客信息
+# 輸入模組
+# 處理輸入並解析乘客訊息
 
 # 分別記錄座位數、路段、乘客數
 first_line = list(map(int, input().split(',')))
@@ -95,8 +95,8 @@ for _ in range(passenger_cnt):
 
 
 # ===================================================
-# 计算模块
-# 初始化座位分配状态并处理每个乘客的请求
+# 計算模組
+# 初始化座位分配狀態並處理每個乘客的請求
 
 # Initialize the seat allocation map
 # current_sales[i][j] represents whether seat i+1 is occupied at segment j+1
@@ -119,7 +119,7 @@ for i in range(passenger_cnt):
         # Update the seat allocation map
         for station in range(s_start - 1, s_end - 1):
             current_sales[assigned_seat - 1][station] = names[i][0].upper() * 2  # Assign the passenger initials to the seat
-        # 將登記成功的旅客紀錄
+        # 將登記成功的乘客紀錄
         passenger_name += names[i][0].upper()
         start.append(s_start)
         end.append(s_end)
@@ -128,8 +128,8 @@ for i in range(passenger_cnt):
 
 
 # ===================================================
-# 重复处理模块
-# 为重复的乘客姓名缩写添加编号
+# 重複處理模組
+# 為重複的乘客姓名縮寫添加編號
 for i in range(len(passenger_name)):
     order = 1  # 旅客編號從1開始
     if passenger_name.count(passenger_name[i]) > 1:  # 若縮寫重複出現多次
@@ -143,8 +143,8 @@ for i in range(len(passenger_name)):
 
 
 # ===================================================
-# 输出模块
-# 打印最终的座位分配状态
+# 輸出模組
+# 輸出最終座位分配狀態
 
 # Print the seat allocation map
 for i in current_sales:
